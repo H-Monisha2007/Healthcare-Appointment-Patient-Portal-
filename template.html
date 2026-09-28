@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Official event portal for Spectrum 2026, the annual college festival.">
+<title>Spectrum 2026 | College Event Portal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎉%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav-bar">
+    <a href="#home" class="logo">✨ Spectrum<span>2026</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <nav id="navMenu" class="nav" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#events">Events</a><a href="#schedule">Schedule</a>
+      <a href="#gallery">Gallery</a><a href="#register">Registration</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section id="home" class="hero">
+    <div class="container">
+      <p class="eyebrow">15 – 17 October 2026 · Main Campus</p>
+      <h1>Spectrum 2026<br>Annual College Festival</h1>
+      <p class="lead">Three days of tech, culture, sports and creativity. Compete, perform, learn and celebrate with thousands of students.</p>
+      <div class="cta"><a class="btn" href="#events">Explore Events</a><a class="btn btn-outline" href="#register">Register Now</a></div>
+      <ul class="stats" id="stats"></ul>
+    </div>
+  </section>
+
+  <section class="section alt" aria-labelledby="hl">
+    <div class="container">
+      <h2 id="hl">Festival Highlights</h2>
+      <div class="grid three" id="highlights"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="an">
+    <div class="container">
+      <h2 id="an">Latest Announcements</h2>
+      <ul class="announce" id="announcements" aria-live="polite"></ul>
+    </div>
+  </section>
+
+  <section id="events" class="section alt" aria-labelledby="ev">
+    <div class="container">
+      <h2 id="ev">Events</h2>
+      <div class="toolbar">
+        <div class="filters" id="filters" role="group" aria-label="Filter events by category"></div>
+        <label class="search"><span class="sr">Search events</span><input type="search" id="eventSearch" placeholder="Search events or venues…"></label>
+      </div>
+      <p class="muted" id="eventCount" aria-live="polite"></p>
+      <div class="grid cards" id="eventGrid"></div>
+    </div>
+  </section>
+
+  <section id="schedule" class="section" aria-labelledby="sc">
+    <div class="container">
+      <h2 id="sc">Festival Schedule</h2>
+      <div class="tabs" id="dayTabs" role="group" aria-label="Choose day"></div>
+      <div class="table-wrap"><table>
+        <caption class="sr">Event schedule for the selected day</caption>
+        <thead><tr><th scope="col">Time</th><th scope="col">Event</th><th scope="col">Venue</th><th scope="col">Category</th></tr></thead>
+        <tbody id="scheduleBody"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section" aria-labelledby="gl">
+    <div class="container">
+      <h2 id="gl">Gallery</h2>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section id="register" class="section alt" aria-labelledby="rg">
+    <div class="container two-col">
+      <div>
+        <h2 id="rg">Event Registration</h2>
+        <div id="formStatus" class="alert" role="status" aria-live="polite" hidden></div>
+        <form id="regForm" novalidate class="card form">
+          <div class="field"><label for="name">Full Name</label><input id="name" name="name" autocomplete="name" placeholder="e.g. Priya Sharma"><small class="err" id="nameErr"></small></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@college.edu"><small class="err" id="emailErr"></small></div>
+          <div class="field"><label for="mobile">Mobile Number</label><input id="mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit number"><small class="err" id="mobileErr"></small></div>
+          <div class="row">
+            <div class="field"><label for="department">Department</label><select id="department" name="department"><option value="">Select department</option></select><small class="err" id="departmentErr"></small></div>
+            <div class="field"><label for="year">Year</label><select id="year" name="year"><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select><small class="err" id="yearErr"></small></div>
+          </div>
+          <div class="field"><label for="event">Event</label><select id="event" name="event"><option value="">Select event</option></select><small class="err" id="eventErr"></small></div>
+          <button class="btn" type="submit">Submit Registration</button>
+        </form>
+      </div>
+      <div>
+        <div class="rec-head"><h2>Registration Records</h2><button class="btn btn-danger btn-sm" id="clearAll" type="button">Clear All</button></div>
+        <p class="muted" id="recCount" aria-live="polite"></p>
+        <div class="table-wrap"><table>
+          <caption class="sr">Saved registrations</caption>
+          <thead><tr><th scope="col">Name</th><th scope="col">Event</th><th scope="col">Dept / Year</th><th scope="col">Contact</th><th scope="col"><span class="sr">Action</span></th></tr></thead>
+          <tbody id="recBody"></tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt" aria-labelledby="ct">
+    <div class="container two-col">
+      <div>
+        <h2 id="ct">Contact Us</h2>
+        <address class="card info">
+          <p><strong>📍 Address</strong><br>Student Activity Centre, Main Campus, Chennai – 600025</p>
+          <p><strong>📞 Phone</strong><br><a href="tel:+919876543210">+91 98765 43210</a></p>
+          <p><strong>✉️ Email</strong><br><a href="mailto:spectrum@college.edu">spectrum@college.edu</a></p>
+          <p><strong>🕘 Help Desk</strong><br>Mon – Sat, 9:00 AM – 5:00 PM</p>
+        </address>
+      </div>
+      <div>
+        <h2>Send an Enquiry</h2>
+        <div id="contactStatus" class="alert" role="status" aria-live="polite" hidden></div>
+        <form id="contactForm" novalidate class="card form">
+          <div class="field"><label for="cName">Name</label><input id="cName" autocomplete="name"><small class="err" id="cNameErr"></small></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" type="email" autocomplete="email"><small class="err" id="cEmailErr"></small></div>
+          <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" rows="4"></textarea><small class="err" id="cMsgErr"></small></div>
+          <button class="btn" type="submit">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container foot">
+    <p>© <span id="year-now">2026</span> Spectrum College Festival. All rights reserved.</p>
+    <nav aria-label="Footer navigation"><a href="#home">Home</a><a href="#events">Events</a><a href="#register">Register</a><a href="#contact">Contact</a></nav>
+  </div>
+</footer>
+
+<dialog id="lightbox" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-nav prev" id="lbPrev" aria-label="Previous image">‹</button>
+  <figure><div class="lb-img" id="lbImg" role="img"></div><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-nav next" id="lbNext" aria-label="Next image">›</button>
+</dialog>
+
+<script src="js/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
